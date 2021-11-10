@@ -1,0 +1,11 @@
+ITH VVVVVVVV
+TODO make morse i/o. Maybe glasses with a bottom.. or just a bottom in a pocket or on the back of a phone.
+TODO expand EDITH capibilities with AI/ML maybe add google home features. Blackjack perfect strats?
+Once I make the morse i/o i might make it its own version. Ring-ith???
+Ring-ith will have all the features except the visual ed features.
+NOTE the edith physical from will be powered by Raspberry Pi Zero W
+
+
+
+ED VVVVVVV *long term...
+TODO And lets add the cool data vizulation with app. GOOGLE LENS!!!!!

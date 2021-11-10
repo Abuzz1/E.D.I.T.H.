@@ -9,13 +9,8 @@ import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
-from dotenv import load_dotenv
 
-load_dotenv()
-
-api = os.environ['API_CODE']
-
-client = wl.Client(api)
+client = wl.Client("G8X7XT-LH93TX486J")
 
 print("Welcome")
 for x in range(100):
