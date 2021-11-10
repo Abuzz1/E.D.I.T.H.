@@ -13,7 +13,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api = os.enviorn['API_CODE']
+api = os.environ['API_CODE']
 
 client = wl.Client(api)
 
