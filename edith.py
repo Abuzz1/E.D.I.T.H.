@@ -44,22 +44,26 @@ def assistant():
 
 
 def txtVersion():
-    print("EDITH")
-    z = input("Query: ")
-    try:
-        wiki_res = wiki.summary(z, sentences=2)
-        wolfram_res = next(client.query(z).results).text
-        print("Wolfram Result: ", wolfram_res)
-        print("Wikipedia Result: ", wiki_res)
-    except wiki.exceptions.DisambiguationError:
-        wolfram_res = next(client.query(z).results).text
-        print("Wolfram Result: ", wolfram_res)
-    except wiki.exceptions.PageError:
-        wolfram_res = next(client.query(z).results).text
-        print("Wolfram Result: ", wolfram_res)
-    except:
-        wiki_res = wiki.summary(z, sentences=2)
-        print("Wikipedia Result: ", wiki_res)
+    while True:
+        print("EDITH")
+        z = input("Query: ")
+        if z == "exit" or z == "ex":
+            clear()
+        else:
+            try:
+                wiki_res = wiki.summary(z, sentences=2)
+                wolfram_res = next(client.query(z).results).text
+                print("Wolfram Result: ", wolfram_res)
+                print("Wikipedia Result: ", wiki_res)
+            except wiki.exceptions.DisambiguationError:
+                wolfram_res = next(client.query(z).results).text
+                print("Wolfram Result: ", wolfram_res)
+            except wiki.exceptions.PageError:
+                wolfram_res = next(client.query(z).results).text
+                print("Wolfram Result: ", wolfram_res)
+            except:
+                wiki_res = wiki.summary(z, sentences=2)
+                print("Wikipedia Result: ", wiki_res)
 
 
 def gui():
