@@ -15,3 +15,6 @@ TODO And lets add the cool data vizulation with app. GOOGLE LENS!!!!!
 
 EDITH VVVVVVV
 TODO the gui part of this. can do most things ringith can do.
+add speech too
+a blurb that reacts
+a website could be the gui

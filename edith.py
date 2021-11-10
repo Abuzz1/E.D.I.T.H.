@@ -1,14 +1,20 @@
+# backend support for edith.
+
 import os
 from os import error
 from os import system, name
+import os.path
 import wolframalpha as wl
 import wikipedia as wiki
-import PySimpleGUI as sg
-import speech_recognition as sr
+import PySimpleGUI as sg # SOON TO BE REMOVED
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
+
+
+
+
 
 client = wl.Client("G8X7XT-LH93TX486J")
 
@@ -25,7 +31,7 @@ layout = [  [sg.Text('E.D.I.T.H. GUI % Stark Industries')],
             [sg.Text('Enter query'), sg.InputText()],
             [sg.Button('Submit')] ]
 
-def text():
+def assistant():
     y = input('gui or terminal: ')
     if y == 'gui':
         gui()
@@ -34,7 +40,7 @@ def text():
     else:
         print("try again!")
         print()
-        text()
+        assistant()
 
 def txtVersion():
     print("EDITH")
@@ -107,14 +113,17 @@ def randomwiki():
             print("RETRY!")
             break
 
+
+
+
 def main():
     print()
     print("Terminal commands: clear")
-    print("BRANCH ACCSESS: text; randomwiki")
+    print("BRANCH ACCSESS: assistant; randomwiki")
     while True:
         i = input("branch: ")
-        if i == "text":
-            text()
+        if i == "assistant":
+            assistant()
         elif i == "clear":
             clear()
         elif i == 'randomwiki':
