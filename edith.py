@@ -125,7 +125,7 @@ def main():
         elif i == 'randomwiki':
             randomwiki()
         else:
-            print('error ~ retry')
+            print('!error! ~ !retry'!)
 
 main()
 # This is pretty neat :D Ali Alshawabkeh
