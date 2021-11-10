@@ -23,3 +23,6 @@ a blurb that reacts
 line of ressesion
 add comments
 GUI
+
+
+add option for wolfram or wiki in vocal part
