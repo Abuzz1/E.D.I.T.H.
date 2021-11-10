@@ -17,4 +17,9 @@ EDITH VVVVVVV
 TODO the gui part of this. can do most things ringith can do.
 add speech too
 a blurb that reacts
-a website could be the gui
+
+
+
+line of ressesion
+add comments
+GUI

@@ -6,14 +6,11 @@ from os import system, name
 import os.path
 import wolframalpha as wl
 import wikipedia as wiki
-import PySimpleGUI as sg # SOON TO BE REMOVED
+import PySimpleGUI as sg  # SOON TO BE REMOVED
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
-
-
-
 
 
 client = wl.Client("G8X7XT-LH93TX486J")
@@ -21,30 +18,34 @@ client = wl.Client("G8X7XT-LH93TX486J")
 print("Welcome")
 for x in range(100):
     print("#")
-    time.sleep(.01)
+    time.sleep(0.01)
 print("Welcome to E.D.I.T.H. (Abuzz-Industies)")
 
 
-sg.theme('DarkAmber')   # Add a touch of color
+sg.theme("DarkAmber")  # Add a touch of color
 # All the stuff inside your window.
-layout = [  [sg.Text('E.D.I.T.H. GUI % Stark Industries')],
-            [sg.Text('Enter query'), sg.InputText()],
-            [sg.Button('Submit')] ]
+layout = [
+    [sg.Text("E.D.I.T.H. GUI % Stark Industries")],
+    [sg.Text("Enter query"), sg.InputText()],
+    [sg.Button("Submit")],
+]
+
 
 def assistant():
-    y = input('gui or terminal: ')
-    if y == 'gui':
+    y = input("gui or terminal: ")
+    if y == "gui":
         gui()
-    elif y == 'terminal':
+    elif y == "terminal":
         txtVersion()
     else:
         print("try again!")
         print()
         assistant()
 
+
 def txtVersion():
     print("EDITH")
-    z = input('Query: ')
+    z = input("Query: ")
     try:
         wiki_res = wiki.summary(z, sentences=2)
         wolfram_res = next(client.query(z).results).text
@@ -60,17 +61,20 @@ def txtVersion():
         wiki_res = wiki.summary(z, sentences=2)
         print("Wikipedia Result: ", wiki_res)
 
+
 def gui():
     try:
         # Create the Window
-        window = sg.Window('EDITH', layout)
+        window = sg.Window("EDITH", layout)
         # Event Loop to process "events" and get the "values" of the inputs
         while True:
             event, values = window.read()
             try:
                 wiki_res = wiki.summary(values[0], sentences=2)
                 wolfram_res = next(client.query(values[0]).results).text
-                sg.PopupNonBlocking("Wolfram Result: ", wolfram_res, "Wikipedia Result: ", wiki_res)
+                sg.PopupNonBlocking(
+                    "Wolfram Result: ", wolfram_res, "Wikipedia Result: ", wiki_res
+                )
             except wiki.exceptions.DisambiguationError:
                 wolfram_res = next(client.query(values[0]).results).text
                 sg.PopupNonBlocking("Wolfram Result: ", wolfram_res)
@@ -87,13 +91,15 @@ def gui():
     except:
         main()
 
+
 def clear():
-    _ = system('clear')
+    _ = system("clear")
     main()
+
 
 def randomwiki():
     while True:
-        #Getting Wiki's random URL page and finding the title
+        # Getting Wiki's random URL page and finding the title
         url = requests.get("https://en.wikipedia.org/wiki/Special:Random")
         soup = BeautifulSoup(url.content, "html.parser")
         title = soup.find(class_="firstHeading").text
@@ -114,8 +120,6 @@ def randomwiki():
             break
 
 
-
-
 def main():
     print()
     print("Terminal commands: clear")
@@ -126,10 +130,11 @@ def main():
             assistant()
         elif i == "clear":
             clear()
-        elif i == 'randomwiki':
+        elif i == "randomwiki":
             randomwiki()
         else:
-            print('!error! ~ !retry!')
+            print("!error! ~ !retry!")
+
 
 main()
 # This is pretty neat :D Ali Alshawabkeh
