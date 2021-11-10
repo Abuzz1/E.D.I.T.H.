@@ -13,9 +13,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_code = os.getenv('api')
-client = wl.Client(API_code)
+api = os.enviorn['API_CODE']
 
+client = wl.Client(api)
 
 print("Welcome")
 for x in range(100):
@@ -125,7 +125,7 @@ def main():
         elif i == 'randomwiki':
             randomwiki()
         else:
-            print('!error! ~ !retry'!)
+            print('!error! ~ !retry!')
 
 main()
 # This is pretty neat :D Ali Alshawabkeh
