@@ -35,7 +35,7 @@ def assistant():
     y = input("gui or terminal: ")
     if y == "gui":
         gui()
-    elif y == "terminal":
+    elif y == "terminal" or y == "term":
         txtVersion()
     else:
         print("try again!")
