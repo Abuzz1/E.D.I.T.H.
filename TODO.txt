@@ -26,3 +26,5 @@ GUI
 
 
 add option for wolfram or wiki in vocal part
+
+add edith ai
