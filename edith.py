@@ -25,7 +25,7 @@ print("Welcome to E.D.I.T.H. (Abuzz-Industies)")
 sg.theme("DarkAmber")  # Add a touch of color
 # All the stuff inside your window.
 layout = [
-    [sg.Text("E.D.I.T.H. GUI % Stark Industries")],
+    [sg.Text("E.D.I.T.H. GUI % Abuzz Industries")],
     [sg.Text("Enter query"), sg.InputText()],
     [sg.Button("Submit")],
 ]
