@@ -46,6 +46,21 @@ def assistant():
 # text version of assistant interface ai
 def txtVersion():
     while True:
+        q = input("Do you want to try wolframAi or the wiki; or both! ")
+        if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
+            wolframAi()
+        elif q == "wiki" or q == "wik":
+            wikiAi()
+        elif q == "both" or q == "Both":
+            bothText()
+        elif q == "clear" or q == "exit" or q == "ex":
+            clear()
+        else:
+            print("try again")
+            txtVersion()
+# both WikiAi and wolframAi interface
+def bothText():
+    while True:
         print("EDITH")
         z = input("Query: ")
         if z == "exit" or z == "ex":
@@ -65,6 +80,41 @@ def txtVersion():
             except:
                 wiki_res = wiki.summary(z, sentences=2)
                 print("Wikipedia Result: ", wiki_res)
+
+# WikiAi interface
+def wikiAi():
+    while True:
+        print("EDITH - wikipedia")
+        z = input("Query: ")
+        if z == "exit" or z == "ex":
+            clear()
+        else:
+            try:
+                wiki_res = wiki.summary(z, sentences=2)
+                print("Wikipedia Result: ", wiki_res)
+            except:
+                print("The Wiki can't find anything for this... try again or try Wolfram")
+                q == "wolframAi"
+                txtVersion()
+
+# wolframAi interface
+def wolframAi():
+    while True:
+        print("EDITH - wolframalpha")
+        z = input("Query: ")
+        if z == "exit" or z == "ex":
+            clear()
+        else:
+            try:
+                wolfram_res = next(client.query(z).results).text
+                print("Wolfram Result: ", wolfram_res)
+            except:
+                print("Wolfram can't find anything for this... try again or try the Wiki")
+                print()
+                txtVersion()
+
+
+
 
 # gui ai
 def gui():
