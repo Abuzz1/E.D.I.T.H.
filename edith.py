@@ -1,5 +1,6 @@
 # backend support for edith.
 
+#Import line
 import os
 from os import error
 from os import system, name
@@ -12,16 +13,16 @@ from bs4 import BeautifulSoup
 import webbrowser
 import time
 
-
+#wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
-
+#Welcome init
 print("Welcome")
 for x in range(100):
     print("#")
     time.sleep(0.01)
 print("Welcome to E.D.I.T.H. (Abuzz-Industies)")
 
-
+# gui interface
 sg.theme("DarkAmber")  # Add a touch of color
 # All the stuff inside your window.
 layout = [
@@ -30,7 +31,7 @@ layout = [
     [sg.Button("Submit")],
 ]
 
-
+#assistant interface
 def assistant():
     y = input("gui or terminal: ")
     if y == "gui":
@@ -42,7 +43,7 @@ def assistant():
         print()
         assistant()
 
-
+# text version of assistant interface ai
 def txtVersion():
     while True:
         print("EDITH")
@@ -65,7 +66,7 @@ def txtVersion():
                 wiki_res = wiki.summary(z, sentences=2)
                 print("Wikipedia Result: ", wiki_res)
 
-
+# gui ai
 def gui():
     try:
         # Create the Window
@@ -95,12 +96,12 @@ def gui():
     except:
         main()
 
-
+# clears space
 def clear():
     _ = system("clear")
     main()
 
-
+# pulls random wikipedia pages to choose
 def randomwiki():
     while True:
         # Getting Wiki's random URL page and finding the title
@@ -123,7 +124,7 @@ def randomwiki():
             print("RETRY!")
             break
 
-
+#Main run loop to run everything.
 def main():
     print()
     print("Terminal commands: clear")
