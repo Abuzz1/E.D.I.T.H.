@@ -16,17 +16,14 @@ glasses
 
 EDITH VVVVVVV
 TODO the gui part of this. can do most things ringith can do.
-add speech too
+add speech too that talks to the gui
 a blurb that reacts
 Raspberrypi hubs
 
 
 
 line of ressesion
-add comments
-GUI
-
-
-add option for wolfram or wiki in vocal part
-
+make the GUI
+make the whole edith background it
+VOCAL commands
 add edith ai
