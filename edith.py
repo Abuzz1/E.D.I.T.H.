@@ -12,6 +12,7 @@ import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
+import sys
 
 #wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
@@ -53,7 +54,7 @@ def txtVersion():
             wikiAi()
         elif q == "both" or q == "Both":
             bothText()
-        elif q == "clear" or q == "exit" or q == "ex":
+        elif q == "exit":
             clear()
         else:
             print("try again")
@@ -181,12 +182,15 @@ def main():
     print("BRANCH ACCSESS: assistant; randomwiki")
     while True:
         i = input("branch: ")
-        if i == "assistant":
+        if i == "assistant" or i == "as":
             assistant()
         elif i == "clear":
             clear()
         elif i == "randomwiki":
             randomwiki()
+        elif i == "exit" or i == "ex":
+            _ = system("clear")
+            sys.exit()
         else:
             print("!error! ~ !retry!")
 
