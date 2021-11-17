@@ -1,4 +1,4 @@
-# backend support for edith.
+# backend support for janith.
 
 #Import line
 import os
@@ -7,30 +7,118 @@ from os import system, name
 import os.path
 import wolframalpha as wl
 import wikipedia as wiki
-import PySimpleGUI as sg  # SOON TO BE REMOVED
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
 import time
 import sys
+#gui
+from kivy.app import App
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.label import Label
+from kivy.uix.image import Image
+from kivy.uix.button import Button
+from kivy.uix.textinput import TextInput
+
 
 #wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
+
+# GUI INTERFACE
+class janithGUI(App):
+    def build(self):
+        #returns a window object with all it's widgets
+        self.window = GridLayout()
+        self.window.cols = 2
+        self.window.rows = 4
+        self.window.size_hint = (1, 1)
+        self.window.pos_hint = {"center_x": 0.5, "center_y":0.5}
+
+
+        # logo
+        self.window.add_widget(Image(source="image-resources/edith-abuzz.png"))
+
+
+        # label widget
+        self.greeting = Label(
+                        text= "What's your name?",
+                        font_size= 18,
+                        color= '#00FFCE'
+                        )
+        self.window.add_widget(Label(
+                        text = "QUICK COMMANDS:",
+                        font_size = 35,
+                        color = '#00FFCE'
+                        ))
+
+
+
+        self.window.add_widget(self.greeting)
+
+        self.window.add_widget(Label(
+                        text = "QUICK COMMANDS:",
+                        font_size = 35,
+                        color = '#00FFCE'
+                        ))
+
+
+
+        # text input widget
+        self.user = TextInput(
+                    multiline= False,
+                    padding_y= (20,20),
+                    size_hint= (1, 0.5)
+                    )
+
+        self.window.add_widget(self.user)
+
+        # button widget
+        self.button = Button(
+                      text= "GREET",
+                      size_hint= (1,0.5),
+                      bold= True,
+                      background_color ='#00FFCE',
+                      #remove darker overlay of background colour
+                      # background_normal = ""
+                      )
+        self.button.bind(on_press=self.callback)
+        self.window.add_widget(self.button)
+
+        return self.window
+
+    def callback(self, instance):
+        # change label text to "Hello + user name!"
+        self.greeting.text = "Hello " + self.user.text + "!"
+
+
+class color:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    NORM = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
 #Welcome init
 print("Welcome")
-for x in range(100):
-    print("#")
+for x in range(20):
+    print(color.FAIL + "#")
     time.sleep(0.01)
-print("Welcome to E.D.I.T.H. (Abuzz-Industies)")
-
-# gui interface
-sg.theme("DarkAmber")  # Add a touch of color
-# All the stuff inside your window.
-layout = [
-    [sg.Text("E.D.I.T.H. GUI % Abuzz Industries")],
-    [sg.Text("Enter query"), sg.InputText()],
-    [sg.Button("Submit")],
-]
+for x in range(50):
+    print(color.OKCYAN + "#")
+for x in range(30):
+    time.sleep(0.01)
+    print(color.OKGREEN + "#")
+    time.sleep(0.01)
+print(color.NORM + """
+░░█ ▄▀█ █▄░█ █ ▀█▀ █░█
+█▄█ █▀█ █░▀█ █ ░█░ █▀█
+""")
+print()
+print(color.NORM + "Welcome to " + color.BOLD + "J.A.N.I.TH " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
 
 #assistant interface
 def assistant():
@@ -62,7 +150,7 @@ def txtVersion():
 # both WikiAi and wolframAi interface
 def bothText():
     while True:
-        print("EDITH")
+        print("JANITH")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -85,7 +173,7 @@ def bothText():
 # WikiAi interface
 def wikiAi():
     while True:
-        print("EDITH - wikipedia")
+        print("JANITH - wikipedia")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -101,7 +189,7 @@ def wikiAi():
 # wolframAi interface
 def wolframAi():
     while True:
-        print("EDITH - wolframalpha")
+        print("JANITH - wolframalpha")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -119,33 +207,10 @@ def wolframAi():
 
 # gui ai
 def gui():
-    try:
-        # Create the Window
-        window = sg.Window("EDITH", layout)
-        # Event Loop to process "events" and get the "values" of the inputs
-        while True:
-            event, values = window.read()
-            try:
-                wiki_res = wiki.summary(values[0], sentences=2)
-                wolfram_res = next(client.query(values[0]).results).text
-                sg.PopupNonBlocking(
-                    "Wolfram Result: ", wolfram_res, "Wikipedia Result: ", wiki_res
-                )
-            except wiki.exceptions.DisambiguationError:
-                wolfram_res = next(client.query(values[0]).results).text
-                sg.PopupNonBlocking("Wolfram Result: ", wolfram_res)
-            except wiki.exceptions.PageError:
-                wolfram_res = next(client.query(values[0]).results).text
-                sg.PopupNonBlocking("Wolfram Result: ", wolfram_res)
-            except:
-                wiki_res = wiki.summary(values[0], sentences=2)
-                sg.PopupNonBlocking("Wikipedia Result: ", wiki_res)
+    if __name__ == "__main__":
+        janithGUI().run()
 
-            print(values[0])
 
-        window.close()
-    except:
-        main()
 
 # clears space
 def clear():
@@ -178,8 +243,8 @@ def randomwiki():
 #Main run loop to run everything.
 def main():
     print()
-    print("Terminal commands: clear")
-    print("BRANCH ACCSESS: assistant; randomwiki")
+    print("Terminal commands: " +  color.OKGREEN + "clear" + color.NORM + "; " + color.OKGREEN + "exit" + color.NORM)
+    print("BRANCH ACCSESS: " +  color.OKGREEN + "assistant"  + color.NORM + "; " + color.OKGREEN + "randomwiki" + color.NORM)
     while True:
         i = input("branch: ")
         if i == "assistant" or i == "as":

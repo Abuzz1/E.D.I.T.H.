@@ -23,7 +23,14 @@ Raspberrypi hubs
 
 
 line of ressesion
+make a cool intro in the term. <./_______\.>
 make the GUI
-make the whole edith background it
-VOCAL commands
+make the whole edith background it with VOCAL commands
 add edith ai
+
+
+
+
+edith will have TWO parts gui with phone and desktop.
+ringith will be connected to the user using i/o. Morse? Tap code. Two rings easy tap code???
+ed will be connected to glasses or sunglasses
