@@ -5,5 +5,10 @@ GUI; terminal use; assistant; and soon to have google home support and perfect s
 
 All in the power of Edith
 
-Just another nonchalant intelligence
-J.A.N.I.TH
+
+
+inspired from the MCU
+Even dead I'm the best
+Edith
+
+long live iron man ~ tony stark
