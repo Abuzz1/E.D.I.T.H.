@@ -1,4 +1,4 @@
-# backend support for janith.
+# backend support for edith.
 
 #Import line
 import os
@@ -25,7 +25,7 @@ from kivy.uix.textinput import TextInput
 client = wl.Client("G8X7XT-LH93TX486J")
 
 # GUI INTERFACE
-class janithGUI(App):
+class edithGUI(App):
     def build(self):
         #returns a window object with all it's widgets
         self.window = GridLayout()
@@ -150,7 +150,7 @@ def txtVersion():
 # both WikiAi and wolframAi interface
 def bothText():
     while True:
-        print("JANITH")
+        print("EDITH")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -173,7 +173,7 @@ def bothText():
 # WikiAi interface
 def wikiAi():
     while True:
-        print("JANITH - wikipedia")
+        print("EDITH - wikipedia")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -189,7 +189,7 @@ def wikiAi():
 # wolframAi interface
 def wolframAi():
     while True:
-        print("JANITH - wolframalpha")
+        print("EDITH - wolframalpha")
         z = input("Query: ")
         if z == "exit" or z == "ex":
             clear()
@@ -208,7 +208,7 @@ def wolframAi():
 # gui ai
 def gui():
     if __name__ == "__main__":
-        janithGUI().run()
+        edithGUI().run()
 
 
 

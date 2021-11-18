@@ -1,9 +1,9 @@
 RINGITH VVVVVVVV
 TODO make morse i/o.
-TODO expand JANITH capibilities with AI/ML maybe add google home features. Blackjack perfect strats?
+TODO expand EDITH capibilities with AI/ML maybe add google home features. Blackjack perfect strats?
 Once I make the morse i/o i might make it its own version. Ring-ith???
 Ring-ith will have all the features except the visual ed features.
-NOTE the JANITH physical from will be powered by Raspberry Pi Zero W
+NOTE the EDITH physical from will be powered by Raspberry Pi Zero W
 
 
 
@@ -14,7 +14,7 @@ glasses
 
 
 
-JANITH VVVVVVV
+EDITH VVVVVVV
 TODO the gui part of this. can do most things ringith can do.
 add speech too that talks to the gui
 a blurb that reacts
@@ -25,12 +25,12 @@ Raspberrypi hubs
 line of ressesion
 make a cool intro in the term. <./_______\.>
 make the GUI
-make the whole JANITH background it with VOCAL commands
-add JANITH ai
+make the whole EDITH background it with VOCAL commands
+add EDITH ai
 
 
 
 
-JANITH will have TWO parts gui with phone and desktop.
+EDITH will have TWO parts gui with phone and desktop.
 ringith will be connected to the user using i/o. Morse? Tap code. Two rings easy tap code???
 ed will be connected to glasses or sunglasses
