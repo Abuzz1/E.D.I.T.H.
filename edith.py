@@ -118,7 +118,7 @@ print(color.NORM + """
 ██▄ █▄▀ █ ░█░ █▀█
 """)
 print()
-print(color.NORM + "Welcome to " + color.BOLD + "J.A.N.I.TH " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
+print(color.NORM + "Welcome to " + color.BOLD + "E.D.I.T.H. " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
 
 #assistant interface
 def assistant():
