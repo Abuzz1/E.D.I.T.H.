@@ -23,7 +23,6 @@ Raspberrypi hubs
 
 
 line of ressesion
-make a cool intro in the term. <./_______\.>
 make the GUI
 make the whole EDITH background it with VOCAL commands
 add EDITH ai
