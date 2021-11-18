@@ -90,7 +90,7 @@ class edithGUI(App):
         # change label text to "Hello + user name!"
         self.greeting.text = "Hello " + self.user.text + "!"
 
-
+# for the colors in printing
 class color:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -113,10 +113,13 @@ for x in range(30):
     time.sleep(0.01)
     print(color.OKGREEN + "#")
     time.sleep(0.01)
-print(color.NORM + """
+
+print(color.NORM +
+"""
 █▀▀ █▀▄ █ ▀█▀ █░█
 ██▄ █▄▀ █ ░█░ █▀█
 """)
+
 print()
 print(color.NORM + "Welcome to " + color.BOLD + "E.D.I.T.H. " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
 
