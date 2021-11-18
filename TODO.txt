@@ -7,9 +7,9 @@ NOTE the EDITH physical from will be powered by Raspberry Pi Zero W
 
 
 
-JA VVVVVVV *long term...
+ED VVVVVVV *long term...
 TODO And lets add the cool data vizulation with app. GOOGLE LENS!!!!!
-glasses
+glasses. magnet attached.
 
 
 
