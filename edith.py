@@ -114,8 +114,8 @@ for x in range(30):
     print(color.OKGREEN + "#")
     time.sleep(0.01)
 print(color.NORM + """
-░░█ ▄▀█ █▄░█ █ ▀█▀ █░█
-█▄█ █▀█ █░▀█ █ ░█░ █▀█
+█▀▀ █▀▄ █ ▀█▀ █░█
+██▄ █▄▀ █ ░█░ █▀█
 """)
 print()
 print(color.NORM + "Welcome to " + color.BOLD + "J.A.N.I.TH " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
