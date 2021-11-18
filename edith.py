@@ -114,15 +114,6 @@ for x in range(30):
     print(color.OKGREEN + "#")
     time.sleep(0.01)
 
-print(color.NORM +
-"""
-█▀▀ █▀▄ █ ▀█▀ █░█
-██▄ █▄▀ █ ░█░ █▀█
-""")
-
-print()
-print(color.NORM + "Welcome to " + color.BOLD + "E.D.I.T.H. " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
-
 #assistant interface
 def assistant():
     y = input("gui or terminal: ")
@@ -245,7 +236,14 @@ def randomwiki():
 
 #Main run loop to run everything.
 def main():
-    print()
+    print(color.NORM +
+    """
+    █▀▀ █▀▄ █ ▀█▀ █░█
+    ██▄ █▄▀ █ ░█░ █▀█
+    """)
+
+    print(color.NORM + "Welcome to " + color.BOLD + "E.D.I.T.H. " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")
+
     print("Terminal commands: " +  color.OKGREEN + "clear" + color.NORM + "; " + color.OKGREEN + "exit" + color.NORM)
     print("BRANCH ACCSESS: " +  color.OKGREEN + "assistant"  + color.NORM + "; " + color.OKGREEN + "randomwiki" + color.NORM)
     while True:
