@@ -136,7 +136,7 @@ def txtVersion():
             wikiAi()
         elif q == "both" or q == "Both":
             bothText()
-        elif q == "exit":
+        elif q == "exit" or q == "ex":
             clear()
         else:
             print("try again")
