@@ -14,11 +14,12 @@ import time
 import sys
 #gui
 from kivy.app import App
-from kivy.uix.gridlayout import GridLayout
+from kivy.uix.widget import Widget
+from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
-from kivy.uix.image import Image
-from kivy.uix.button import Button
 from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.image import Image
 
 
 #wolframalpha api key
@@ -26,69 +27,65 @@ client = wl.Client("G8X7XT-LH93TX486J")
 
 # GUI INTERFACE
 class edithGUI(App):
-    def build(self):
-        #returns a window object with all it's widgets
-        self.window = GridLayout()
-        self.window.cols = 2
-        self.window.rows = 4
-        self.window.size_hint = (1, 1)
-        self.window.pos_hint = {"center_x": 0.5, "center_y":0.5}
-
-
-        # logo
-        self.window.add_widget(Image(source="image-resources/edith-abuzz.png"))
-
-
-        # label widget
-        self.greeting = Label(
-                        text= "What's your name?",
-                        font_size= 18,
-                        color= '#00FFCE'
+    txtBox = TextInput(
+                        multiline = True,
+                        padding_y = (20,20),
+                        size_hint = (1, 0.5)
                         )
-        self.window.add_widget(Label(
-                        text = "QUICK COMMANDS:",
-                        font_size = 35,
-                        color = '#00FFCE'
-                        ))
+
+    out = Label(
+                text = "Output: ",
+                font_size ="25dp",
+                color = '#00FFCE'
+                            )
+
+    def build(self):
+        #LAYOUTS
+        mainLayout = BoxLayout(orientation = 'vertical')
+        hboxLayout = BoxLayout(orientation='horizontal')
+
+        img =  Image(source="image-resources/edith-abuzz.png")
+
+        wi = Button(text = "wikipedia", background_color = "#6FB1FC")
+        ed = Button(text = "edith.ai", background_color = "#6FB1FC")
+        wa = Button(text = "wolframealpha", background_color = "#6FB1FC")
+
+        mainLayout.add_widget(img)
+        wi.bind(on_press = self.wik)
+        hboxLayout.add_widget(wi)
+        ed.bind(on_press = self.edi)
+        hboxLayout.add_widget(ed)
+        wa.bind(on_press = self.wfa)
+        hboxLayout.add_widget(wa)
+        vboxLayout = BoxLayout(orientation='vertical')
 
 
+        vboxLayout.add_widget(self.txtBox)
+        vboxLayout.add_widget(self.out)
 
-        self.window.add_widget(self.greeting)
+        mainLayout.add_widget(hboxLayout)
+        mainLayout.add_widget(vboxLayout)
+        return mainLayout
 
-        self.window.add_widget(Label(
-                        text = "QUICK COMMANDS:",
-                        font_size = 35,
-                        color = '#00FFCE'
-                        ))
+    def wik(self, instance):
+        # self.out.text = ""
+        try:
+            wiki_res = wiki.summary(self.txtBox.text, sentences=2)
+            self.out.text = wiki_res
+        except:
+            self.out.text = "The Wiki can't find anything for this... try again or try Wolfram"
 
 
+    def edi(self, instance):
+        self.out.text = "Edith AI coming soon.."
 
-        # text input widget
-        self.user = TextInput(
-                    multiline= False,
-                    padding_y= (20,20),
-                    size_hint= (1, 0.5)
-                    )
 
-        self.window.add_widget(self.user)
-
-        # button widget
-        self.button = Button(
-                      text= "GREET",
-                      size_hint= (1,0.5),
-                      bold= True,
-                      background_color ='#00FFCE',
-                      #remove darker overlay of background colour
-                      # background_normal = ""
-                      )
-        self.button.bind(on_press=self.callback)
-        self.window.add_widget(self.button)
-
-        return self.window
-
-    def callback(self, instance):
-        # change label text to "Hello + user name!"
-        self.greeting.text = "Hello " + self.user.text + "!"
+    def wfa(self, instance):
+        try:
+            wolfram_res = next(client.query(self.txtBox.text).results).text
+            self.out.text = wolfram_res
+        except:
+            self.out.text = "Wolfram can't find anything for this... try again or try the Wiki"
 
 # for the colors in printing
 class color:
@@ -202,8 +199,8 @@ def wolframAi():
 # gui ai
 def gui():
     if __name__ == "__main__":
-        edithGUI().run()
-
+        window = edithGUI()
+        window.run()
 
 
 # clears space
@@ -238,8 +235,8 @@ def randomwiki():
 def main():
     print(color.NORM +
     """
-    █▀▀ █▀▄ █ ▀█▀ █░█
-    ██▄ █▄▀ █ ░█░ █▀█
+    █▀▀ █▀▄ █ ▀█▀ █ █
+    ██▄ █▄▀ █  █  █▀█
     """)
 
     print(color.NORM + "Welcome to " + color.BOLD + "E.D.I.T.H. " + color.NORM + "(" + color.FAIL + "Abuzz-Industies" + color.NORM + ")")

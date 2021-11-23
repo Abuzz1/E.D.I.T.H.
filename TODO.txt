@@ -23,7 +23,6 @@ Raspberrypi hubs
 
 
 line of ressesion
-make the GUI
 make the whole EDITH background it with VOCAL commands
 add EDITH ai
 
