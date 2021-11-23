@@ -17,13 +17,14 @@ glasses. magnet attached.
 EDITH VVVVVVV
 TODO the gui part of this. can do most things ringith can do.
 add speech too that talks to the gui
-a blurb that reacts
-Raspberrypi hubs
+Hck
+document reading
+
 
 
 
 line of ressesion
-make the whole EDITH background it with VOCAL commands
+VOCAL commands
 add EDITH ai
 
 
