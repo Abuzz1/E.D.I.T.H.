@@ -26,6 +26,7 @@ document reading
 line of ressesion
 VOCAL commands
 add EDITH ai
+buildozer
 
 
 

@@ -1,3 +1,0 @@
-title=<edith>
-author=<Ali Alshawabkeh>
-orientation=<portrait>
