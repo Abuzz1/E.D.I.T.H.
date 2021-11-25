@@ -16,8 +16,8 @@ long live iron man ~ tony stark -->
 
 
 -->
-[![Owner][Ali Alshawabkeb]][https://github.com/Abuzz1]
-[![BSD 3-Clause License][BSD-3]][https://github.com/Abuzz1/E.D.I.T.H./blob/main/LICENSE]
+[![Owner][contributors-shield]][https://github.com/Abuzz1]
+[![BSD 3BSD 3-Clause License][license-shield]][https://github.com/Abuzz1/E.D.I.T.H./blob/main/LICENSE]
 
 
 
