@@ -43,8 +43,6 @@ long live iron man ~ tony stark -->
     <a href="https://github.com/Abuzz1/E.D.I.T.H./"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Abuzz1/E.D.I.T.H./">View Demo</a>
-    ·
     <a href="https://github.com/Abuzz1/E.D.I.T.H./issues">Report Bug</a>
     ·
     <a href="https://github.com/Abuzz1/E.D.I.T.H./issues">Request Feature</a>
