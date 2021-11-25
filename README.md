@@ -136,7 +136,7 @@ Distributed under the BSD-3 License. See `LICENSE in the main branch` for more i
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@alialshawabkeh12@gmail.com]([@alialshawabkeh12@gmail.com) - alialshawabkeh12@gmail.com
+Ali Alshawabkeh - [@alialshawabkeh12@gmail.com]([@alialshawabkeh12@gmail.com)]
 
 Project Link: [https://github.com/Abuzz1/E.D.I.T.H.](https://github.com/Abuzz1/E.D.I.T.H.)
 
