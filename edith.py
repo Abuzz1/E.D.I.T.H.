@@ -1,4 +1,4 @@
-# backend support for edith.
+# backend and frontend support for edith.
 
 # Import line
 import os
@@ -22,10 +22,13 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 
+# tts
+from gtts import gTTS
 
 # wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
 
+# GUI INTERFACE
 class WrappedLabel(Label):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -34,7 +37,7 @@ class WrappedLabel(Label):
             self.setter('text_size')(self, (self.width, None)),
             texture_size=lambda *x: self.setter('height')(self, self.texture_size[1]))
 
-# GUI INTERFACE
+
 class edithGUI(App):
     txtBox = TextInput(multiline = True, padding_y = (20, 20), size_hint = (1, 0.5))
     out = WrappedLabel(text = "Output: ", font_size="15dp", color="#00FFCE", halign = "center")
@@ -105,6 +108,10 @@ class color:
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
 
+def tts(outBeta):
+    vOut = gTTS(text = outBeta, lang = "en", slow = False)
+    vOut.save("voice.mp3")
+    os.system("afplay " + "voice.mp3")
 
 # Welcome init
 print("Welcome")
