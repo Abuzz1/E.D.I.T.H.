@@ -110,8 +110,8 @@ class color:
 
 def tts(outBeta):
     vOut = gTTS(text = outBeta, lang = "en", slow = False)
-    vOut.save("voice.mp3")
-    os.system("afplay " + "voice.mp3")
+    vOut.save(".voice.mp3")
+    os.system("afplay " + ".voice.mp3")
 
 # Welcome init
 print("Welcome")
@@ -311,6 +311,5 @@ def main():
             sys.exit()
         else:
             print("!error! ~ !retry!")
-
 main()
 # This is pretty neat :D Ali Alshawabkeh
