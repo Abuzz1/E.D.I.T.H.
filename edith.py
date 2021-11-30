@@ -25,6 +25,7 @@ from kivy.uix.image import Image
 # tts
 from gtts import gTTS
 
+
 # wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
 
@@ -36,7 +37,6 @@ class WrappedLabel(Label):
             width=lambda *x:
             self.setter('text_size')(self, (self.width, None)),
             texture_size=lambda *x: self.setter('height')(self, self.texture_size[1]))
-
 
 class edithGUI(App):
     txtBox = TextInput(multiline = True, padding_y = (20, 20), size_hint = (1, 0.5))
@@ -78,6 +78,7 @@ class edithGUI(App):
         try:
             wiki_res = wiki.summary(self.txtBox.text, sentences=2)
             self.out.text = wiki_res
+            tts(wiki_res)
         except:
             self.out.text = (
                 "The Wiki can't find anything for this... try again or try Wolfram"
@@ -90,6 +91,7 @@ class edithGUI(App):
         try:
             wolfram_res = next(client.query(self.txtBox.text).results).text
             self.out.text = wolfram_res
+            tts(wolfram_res)
         except:
             self.out.text = (
                 "Wolfram can't find anything for this... try again or try the Wiki"
@@ -107,7 +109,7 @@ class color:
     NORM = "\033[0m"
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
-
+# Text To Speech function
 def tts(outBeta):
     vOut = gTTS(text = outBeta, lang = "en", slow = False)
     vOut.save(".voice.mp3")
@@ -141,42 +143,17 @@ def assistant():
 # text version of assistant interface ai
 def txtVersion():
     while True:
-        q = input("Do you want to try wolframAi or the wiki; or both! ")
+        q = input("Do you want to try wolframAi or the wiki? ")
         if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
             wolframAi()
         elif q == "wiki" or q == "wik":
             wikiAi()
-        elif q == "both" or q == "Both":
-            bothText()
         elif q == "exit" or q == "ex":
             clear()
         else:
             print("try again")
             txtVersion()
 
-
-# both WikiAi and wolframAi interface
-def bothText():
-    while True:
-        print("EDITH")
-        z = input("Query: ")
-        if z == "exit" or z == "ex":
-            clear()
-        else:
-            try:
-                wiki_res = wiki.summary(z, sentences=2)
-                wolfram_res = next(client.query(z).results).text
-                print("Wolfram Result: ", wolfram_res)
-                print("Wikipedia Result: ", wiki_res)
-            except wiki.exceptions.DisambiguationError:
-                wolfram_res = next(client.query(z).results).text
-                print("Wolfram Result: ", wolfram_res)
-            except wiki.exceptions.PageError:
-                wolfram_res = next(client.query(z).results).text
-                print("Wolfram Result: ", wolfram_res)
-            except:
-                wiki_res = wiki.summary(z, sentences=2)
-                print("Wikipedia Result: ", wiki_res)
 
 
 # WikiAi interface
@@ -190,10 +167,13 @@ def wikiAi():
         else:
             try:
                 wiki_res = wiki.summary(z, sentences=2)
-                print("Wikipedia Result: ", wiki_res)
+                print("Wikipedia Result:")
+                print()
+                print(wiki_res)
+                tts(wiki_res)
             except:
                 print("The Wiki can't find anything for this... try again or try Wolfram")
-                q == "wolframAi"
+                print()
 
                 txtVersion()
 
@@ -208,10 +188,14 @@ def wolframAi():
         else:
             try:
                 wolfram_res = next(client.query(z).results).text
-                print("Wolfram Result: ", wolfram_res)
+                print("Wolfram Result:")
+                print()
+                print(wolfram_res)
+                tts(wolfram_res)
             except:
                 print("Wolfram can't find anything for this... try again or try the Wiki")
                 print()
+
                 txtVersion()
 
 
@@ -298,6 +282,7 @@ def main():
         + "randomwiki"
         + color.NORM
     )
+
     while True:
         i = input("branch: ")
         if i == "assistant" or i == "as":

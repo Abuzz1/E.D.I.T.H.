@@ -15,7 +15,7 @@ glasses. magnet attached.
 
 
 EDITH VVVVVVV
-TODO the gui part of this. can do most things ringith can do.
+Can do most things ringith can do.
 add speech too that talks to the gui
 Hck
 document reading
@@ -24,8 +24,9 @@ document reading
 
 
 line of ressesion
-VOCAL commands
-add EDITH ai
+VOCAL commands w/o edith term activation and use without mouse or tapping init. ex. Edith 'x' in wolframAi or just simplily to use edith.ai: Edith 'x'
+flags to open gui or term fast or query fast
+add EDITH ai in a different file from edith.py to import class to run commands 
 buildozer
 
 
