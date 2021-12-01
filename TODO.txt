@@ -24,9 +24,12 @@ document reading
 
 
 line of ressesion
+remove wiki, add google search
 VOCAL commands w/o edith term activation and use without mouse or tapping init. ex. Edith 'x' in wolframAi or just simplily to use edith.ai: Edith 'x'
+make wolframAi  its own file for smaller size in edith
+fix gui with respect for tts and/or remove wiki and add search
 flags to open gui or term fast or query fast
-add EDITH ai in a different file from edith.py to import class to run commands 
+add EDITH ai in a different file from edith.py to import class to run commands with a JSON file to hold all i/o commands
 buildozer
 
 

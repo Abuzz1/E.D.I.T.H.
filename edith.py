@@ -6,7 +6,6 @@ from os import error
 from os import system, name
 import os.path
 import wolframalpha as wl
-import wikipedia as wiki
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
@@ -23,9 +22,10 @@ from kivy.uix.button import Button
 from kivy.uix.image import Image
 
 # tts
-from gtts import gTTS
+from TextToSpeech import tts
 
-
+# Google Search
+from GoogleSearch import ggs
 # wolframalpha api key
 client = wl.Client("G8X7XT-LH93TX486J")
 
@@ -78,7 +78,7 @@ class edithGUI(App):
         try:
             wiki_res = wiki.summary(self.txtBox.text, sentences=2)
             self.out.text = wiki_res
-            tts(wiki_res)
+            tts.run(wiki_res)
         except:
             self.out.text = (
                 "The Wiki can't find anything for this... try again or try Wolfram"
@@ -91,7 +91,7 @@ class edithGUI(App):
         try:
             wolfram_res = next(client.query(self.txtBox.text).results).text
             self.out.text = wolfram_res
-            tts(wolfram_res)
+            tts.run(wolfram_res)
         except:
             self.out.text = (
                 "Wolfram can't find anything for this... try again or try the Wiki"
@@ -109,11 +109,7 @@ class color:
     NORM = "\033[0m"
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
-# Text To Speech function
-def tts(outBeta):
-    vOut = gTTS(text = outBeta, lang = "en", slow = False)
-    vOut.save(".voice.mp3")
-    os.system("afplay " + ".voice.mp3")
+
 
 # Welcome init
 print("Welcome")
@@ -143,40 +139,20 @@ def assistant():
 # text version of assistant interface ai
 def txtVersion():
     while True:
-        q = input("Do you want to try wolframAi or the wiki? ")
+        q = input("Do you want to try wolframAi or search? ")
         if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
             wolframAi()
-        elif q == "wiki" or q == "wik":
-            wikiAi()
-        elif q == "exit" or q == "ex":
+        elif q == "search" or q == "sc":
+            i = input("answer of descr? ")
+            if i == "descr":
+                ggs.disc_search()
+            elif i == "answer":
+                ggs.answer_search()
+        elif q == "exit" or q == "ex" or q == "clear":
             clear()
         else:
             print("try again")
             txtVersion()
-
-
-
-# WikiAi interface
-def wikiAi():
-    while True:
-        print("EDITH - wikipedia")
-        z = input("Query: ")
-
-        if z == "exit" or z == "ex":
-            clear()
-        else:
-            try:
-                wiki_res = wiki.summary(z, sentences=2)
-                print("Wikipedia Result:")
-                print()
-                print(wiki_res)
-                tts(wiki_res)
-            except:
-                print("The Wiki can't find anything for this... try again or try Wolfram")
-                print()
-
-                txtVersion()
-
 
 # wolframAi interface
 def wolframAi():
@@ -191,7 +167,7 @@ def wolframAi():
                 print("Wolfram Result:")
                 print()
                 print(wolfram_res)
-                tts(wolfram_res)
+                tts.run(wolfram_res)
             except:
                 print("Wolfram can't find anything for this... try again or try the Wiki")
                 print()
@@ -232,6 +208,8 @@ def randomwiki():
         elif ans == "n" or ans == "N":
             print("Try again!")
             continue
+        elif ans == "clear" or ans == "exit" or ans == "ex":
+            clear()
         else:
             print("ERROR!")
             print("RETRY!")
