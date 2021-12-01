@@ -5,7 +5,6 @@ import os
 from os import error
 from os import system, name
 import os.path
-import wolframalpha as wl
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
@@ -21,13 +20,14 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 
-# tts
+# text to speech
 from TextToSpeech import tts
 
-# Google Search
+# google search
 from GoogleSearch import ggs
-# wolframalpha api key
-client = wl.Client("G8X7XT-LH93TX486J")
+
+# wolframAi
+from wa import wolframAi
 
 # GUI INTERFACE
 class WrappedLabel(Label):
@@ -141,10 +141,10 @@ def txtVersion():
     while True:
         q = input("Do you want to try wolframAi or search? ")
         if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
-            wolframAi()
+            wolframAi.run()
         elif q == "search" or q == "sc":
             i = input("answer of descr? ")
-            if i == "descr":
+            if i == "descr" or i == "d":
                 ggs.disc_search()
             elif i == "answer":
                 ggs.answer_search()
@@ -153,26 +153,6 @@ def txtVersion():
         else:
             print("try again")
             txtVersion()
-
-# wolframAi interface
-def wolframAi():
-    while True:
-        print("EDITH - wolframalpha")
-        z = input("Query: ")
-        if z == "exit" or z == "ex":
-            clear()
-        else:
-            try:
-                wolfram_res = next(client.query(z).results).text
-                print("Wolfram Result:")
-                print()
-                print(wolfram_res)
-                tts.run(wolfram_res)
-            except:
-                print("Wolfram can't find anything for this... try again or try the Wiki")
-                print()
-
-                txtVersion()
 
 
 # gui ai
