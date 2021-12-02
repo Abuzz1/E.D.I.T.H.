@@ -120,3 +120,104 @@ class wolframAi(object):
                     print("Wolfram can't find anything for this... try again or try the Wiki")
                     print()
                     break
+
+
+
+
+# gui
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
+from kivy.uix.textinput import TextInput
+from kivy.uix.button import Button
+from kivy.uix.image import Image
+
+# GUI INTERFACE
+class WrappedLabel(Label):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.bind(
+            width=lambda *x:
+            self.setter('text_size')(self, (self.width, None)),
+            texture_size=lambda *x: self.setter('height')(self, self.texture_size[1]))
+
+class edithGUI(App):
+    txtBox = TextInput(multiline = True, padding_y = (20, 20), size_hint = (1, 0.5))
+    out = WrappedLabel(text = "Output: ", font_size="15dp", color="#00FFCE", halign = "center")
+
+    def build(self):
+        # LAYOUTS
+        mainLayout = BoxLayout(orientation="vertical")
+        hboxLayout = BoxLayout(orientation="horizontal")
+
+        img = Image(source="image-resources/edith-abuzz.png")
+
+        wi = Button(text="wikipedia", background_color="#6FB1FC")
+        ed = Button(text="edith.ai", background_color="#6FB1FC")
+        wa = Button(text="wolframealpha", background_color="#6FB1FC")
+
+        mainLayout.add_widget(img)
+        wi.bind(on_press=self.wik)
+
+        hboxLayout.add_widget(wi)
+        ed.bind(on_press=self.edi)
+
+        hboxLayout.add_widget(ed)
+        #COMING SOON
+        wa.bind(on_press=self.wfa)
+        hboxLayout.add_widget(wa)
+
+        vboxLayout = BoxLayout(orientation="vertical")
+
+        vboxLayout.add_widget(self.txtBox)
+        vboxLayout.add_widget(self.out)
+
+        mainLayout.add_widget(hboxLayout)
+        mainLayout.add_widget(vboxLayout)
+        return mainLayout
+
+    def wik(self, instance):
+        # self.out.text = ""
+        try:
+            wiki_res = wiki.summary(self.txtBox.text, sentences=2)
+            self.out.text = wiki_res
+            tts.run(wiki_res)
+        except:
+            self.out.text = (
+                "The Wiki can't find anything for this... try again or try Wolfram"
+            )
+
+    def edi(self, instance):
+        self.out.text = "Edith AI coming soon.."
+
+    def wfa(self, instance):
+        try:
+            wolfram_res = next(client.query(self.txtBox.text).results).text
+            self.out.text = wolfram_res
+            tts.run(wolfram_res)
+        except:
+            self.out.text = (
+                "Wolfram can't find anything for this... try again or try the Wiki"
+            )
+
+
+
+
+
+
+
+# !!!!!!~
+
+
+# for the colors in printing
+class color:
+    HEADER = "\033[95m"
+    OKBLUE = "\033[94m"
+    OKCYAN = "\033[96m"
+    OKGREEN = "\033[92m"
+    WARNING = "\033[93m"
+    FAIL = "\033[91m"
+    NORM = "\033[0m"
+    BOLD = "\033[1m"
+    UNDERLINE = "\033[4m"
