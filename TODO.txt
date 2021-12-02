@@ -25,8 +25,8 @@ document reading
 
 line of ressesion
 VOCAL commands w/o edith term activation and use without mouse or tapping init. ex. Edith 'x' in wolframAi or just simplily to use edith.ai: Edith 'x'
-fix gui with respect for tts and/or remove wiki and add search
-make gui its own file
+fix gui with respect for tts and remove wiki and add search and wolframAi
+Make main file less WET with classes
 flags to open gui or term fast or query fast
 add EDITH ai in a different file from edith.py to import class to run commands with a JSON file to hold all i/o commands
 buildozer
