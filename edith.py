@@ -20,14 +20,8 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
 from kivy.uix.image import Image
 
-# text to speech
-from TextToSpeech import tts
-
-# google search
-from GoogleSearch import ggs
-
-# wolframAi
-from wa import wolframAi
+# CLASSES TTS GGS WOLFRAMAI
+from EdithOBJs import tts, ggs, wolframAi
 
 # GUI INTERFACE
 class WrappedLabel(Label):

@@ -1,7 +1,21 @@
+#TTS LIRBRAIES
+from gtts import gTTS
+import os
+
+#TTS
+class tts:
+    def run(outBeta):
+        vOut = gTTS(text = outBeta, lang = "en", slow = False)
+        vOut.save(".voice.mp3")
+        os.system("afplay " + ".voice.mp3")
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+
+# GOOGLE SEARCH LIRBRAIES
 import requests
 from bs4 import BeautifulSoup
-
-from TextToSpeech import tts
+#GTTS
 class ggs():
     def answer_search():
         result = ''
@@ -76,3 +90,33 @@ class ggs():
         else:
             print(result)
             tts.run(result)
+
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
+
+
+#WOLFRAMAI LIRBRAIES
+import wolframalpha as wl
+# wolframalpha api key
+client = wl.Client("G8X7XT-LH93TX486J")
+
+#WOLFRAMAI
+class wolframAi(object):
+    def run():
+        while True:
+            print("EDITH - wolframalpha")
+            z = input("Query: ")
+            if z == "exit" or z == "ex":
+                break
+            else:
+                try:
+                    wolfram_res = next(client.query(z).results).text
+                    print("Wolfram Result:")
+                    print()
+                    print(wolfram_res)
+                    tts.run(wolfram_res)
+                except:
+                    print("Wolfram can't find anything for this... try again or try the Wiki")
+                    print()
+                    break
