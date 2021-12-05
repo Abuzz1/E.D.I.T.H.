@@ -90,6 +90,77 @@ class ggs():
         else:
             print(result)
             tts.run(result)
+    def answer_searchSTT(user_query):
+        result = ''
+
+        URL = "https://www.google.co.in/search?q=" + user_query
+
+        headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
+        }
+
+        page = requests.get(URL, headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        ni = True
+
+        if ni == True: # Answer 1
+            try:
+                result = soup.find(class_='Z0LcW').get_text()
+                ni = False
+            except:
+                pass
+
+        if ni == True: # Answer 2
+            try:
+                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
+                ni = False
+            except:
+                pass
+
+        if result == '':
+            print("Restate the question")
+            tts.run("Restate the question")
+        else:
+            print(result)
+            tts.run(result)
+
+    def disc_searchSTT(user_query):
+        result = ''
+
+        URL = "https://www.google.co.in/search?q=" + user_query
+
+        headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
+        }
+
+        page = requests.get(URL, headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        ni = True
+        if ni == True:  # Description 1
+            try:
+                result = soup.find(class_='kno-rdesc').get_text()
+                ni = False
+            except:
+                pass
+        if ni == True:  # Description 2
+            try:
+                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
+                ni = False
+            except:
+                pass
+
+        if ni == True:  # Description 3
+            try:
+                result = soup.find(class_='LGOjhe').get_text()
+                ni = False
+            except:
+                pass
+        if result == '':
+            print("Restate the question")
+            tts.run("Restate the question")
+        else:
+            print(result)
+            tts.run(result)
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -102,7 +173,7 @@ import wolframalpha as wl
 client = wl.Client("G8X7XT-LH93TX486J")
 
 #WOLFRAMAI
-class wolframAi(object):
+class wolframAi():
     def run():
         while True:
             print("EDITH - wolframalpha")
@@ -122,6 +193,19 @@ class wolframAi(object):
                     break
 
 
+#WOLFRAMAI version for speech to text
+class wolframAiSTT():
+    def run(z):
+        print("EDITH - wolframalpha")
+        try:
+            wolfram_res = next(client.query(z).results).text
+            print("Wolfram Result:")
+            print()
+            print(wolfram_res)
+            tts.run(wolfram_res)
+        except:
+            print("Wolfram can't find anything for this... try again or try the Wiki")
+            print()
 
 
 # gui
@@ -221,3 +305,84 @@ class color:
     NORM = "\033[0m"
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
+
+
+
+
+
+#stt
+
+
+import speech_recognition as sr
+import re
+
+class stt():
+    def micro():
+        recognizer = sr.Recognizer()
+        microphone = sr.Microphone()
+
+        # check that recognizer and microphone arguments are appropriate type
+        if not isinstance(recognizer, sr.Recognizer):
+            raise TypeError("`recognizer` must be `Recognizer` instance")
+
+        if not isinstance(microphone, sr.Microphone):
+            raise TypeError("`microphone` must be `Microphone` instance")
+        try:
+            # listen and assign
+            with microphone as source:
+                recognizer.adjust_for_ambient_noise(source)
+                audio = recognizer.listen(source)
+            # return output
+            return recognizer.recognize_google(audio)
+        except:
+            print("speak up!")
+
+    def a(q):
+        ggs.answer_searchSTT(q)
+    def d(q):
+        ggs.disc_searchSTT(q)
+    def wolf(q):
+        wolframAiSTT.run(q)
+
+    def run():
+        def wakeUp():
+            alpha = stt.micro()
+            # alpha = input()
+            print(alpha)
+            try:
+                #answer
+                if re.search('.+answer', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    a(query)
+                elif re.search('answer', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    a(query)
+                #description
+                elif re.search('.+description', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    d(query)
+                elif re.search('description', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    d(query)
+                #wolf
+                elif re.search('.+wolf', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    wolf(query)
+                elif re.search('wolf', str(alpha)):
+                    alpha.split(' ', 1)
+                    query = alpha.split(' ' , 1)[1]
+                    wolf(query)
+                #ERRORS
+                else:
+                    print("Say it again!")
+
+            except:
+                print("Say it again!")
+
+
+        wakeUp()

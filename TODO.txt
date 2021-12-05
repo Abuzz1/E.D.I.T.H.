@@ -24,16 +24,18 @@ document reading
 
 
 line of ressesion
-VOCAL commands w/o edith term activation and use without mouse or tapping init. ex. Edith 'x' in wolframAi or just simplily to use edith.ai: Edith 'x'
+make or ops better
 fix gui with respect for tts and remove wiki and add search and wolframAi
-Make main file less WET with classes
 flags to open gui or term fast or query fast
 add EDITH ai in a different file from edith.py to import class to run commands with a JSON file to hold all i/o commands
 buildozer
 
+think about migrating into rust
 
 
 
 EDITH will have TWO parts gui with phone and desktop.
 ringith will be connected to the user using i/o. Morse? Tap code. Two rings easy tap code???
 ed will be connected to glasses or sunglasses
+
+edithv2 will all by in rings. All the power form edith, ringith, and ed. Holograms? 

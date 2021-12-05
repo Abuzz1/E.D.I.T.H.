@@ -2,8 +2,7 @@
 
 # Import line
 import os
-from os import error
-from os import system, name
+from os import system, name, error
 import os.path
 import requests
 from bs4 import BeautifulSoup
@@ -12,10 +11,8 @@ import time
 import sys
 
 
-# CLASSES TTS GGS WOLFRAMAI
-from EdithOBJs import tts, ggs, wolframAi, edithGUI, color
-
-
+# CLASSES tts, ggs, wolframAi, edithGUI, color
+from EdithOBJs import *
 
 # Welcome init
 print("Welcome")
@@ -41,11 +38,10 @@ def assistant():
         print()
         assistant()
 
-
 # text version of assistant interface ai
 def txtVersion():
     while True:
-        q = input("Do you want to try wolframAi or search? ")
+        q = input("Do you want to try wolframAi, search or the speech version? ")
         if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
             wolframAi.run()
         elif q == "search" or q == "sc":
@@ -54,14 +50,15 @@ def txtVersion():
                 ggs.disc_search()
             elif i == "answer":
                 ggs.answer_search()
+        elif q == "speech":
+            stt.run()
         elif q == "exit" or q == "ex" or q == "clear":
             clear()
         else:
             print("try again")
             txtVersion()
 
-
-# gui ai
+# gui version
 def gui():
     if __name__ == "__main__":
         window = edithGUI()
@@ -72,7 +69,6 @@ def gui():
 def clear():
     _ = system("clear")
     main()
-
 
 # pulls random wikipedia pages to choose
 def randomwiki():
@@ -101,51 +97,19 @@ def randomwiki():
             print("RETRY!")
             break
 
-
 # Main run loop to run everything.
 def main():
-    print(
-        color.NORM
-        +
+    print(color.NORM +
     """
     █▀▀ █▀▄ █ ▀█▀ █ █
     ██▄ █▄▀ █  █  █▀█
     """
     )
 
-    print(
-        color.NORM
-        + "Welcome to "
-        + color.BOLD
-        + "E.D.I.T.H. "
-        + color.NORM
-        + "("
-        + color.FAIL
-        + "Abuzz-Industies"
-        + color.NORM
-        + ")"
-    )
+    print(color.NORM+"Welcome to "+color.BOLD+"E.D.I.T.H. "+color.NORM+"("+color.FAIL+"Abuzz-Industies"+color.NORM+")")
+    print("Terminal commands: "+color.OKGREEN+"clear"+color.NORM+"; "+color.OKGREEN+"exit"+color.NORM)
+    print("BRANCH ACCSESS: "+color.OKGREEN+"assistant"+color.NORM+"; "+color.OKGREEN+"randomwiki"+ color.NORM)
 
-    print(
-        "Terminal commands: "
-        + color.OKGREEN
-        + "clear"
-        + color.NORM
-        + "; "
-        + color.OKGREEN
-        + "exit"
-        + color.NORM
-    )
-    print(
-        "BRANCH ACCSESS: "
-        + color.OKGREEN
-        + "assistant"
-        + color.NORM
-        + "; "
-        + color.OKGREEN
-        + "randomwiki"
-        + color.NORM
-    )
 
     while True:
         i = input("branch: ")
