@@ -31,7 +31,7 @@ def assistant():
     y = input("gui or terminal: ")
     if y == "gui":
         gui()
-    elif y == "terminal" or y == "term":
+    elif y == "terminal" or "term":
         txtVersion()
     else:
         print("try again!")
@@ -42,17 +42,17 @@ def assistant():
 def txtVersion():
     while True:
         q = input("Do you want to try wolframAi, search or the speech version? ")
-        if q == "wolframAi" or q == "wolframai" or q == "wa" or q == "wA":
+        if q == "wolframAi" or "wolframai" or "wa" or "wA":
             wolframAi.run()
-        elif q == "search" or q == "sc":
+        elif q == "search" or "sc":
             i = input("answer of descr? ")
-            if i == "descr" or i == "d":
+            if i == "descr" or "d":
                 ggs.disc_search()
             elif i == "answer":
                 ggs.answer_search()
         elif q == "speech":
             stt.run()
-        elif q == "exit" or q == "ex" or q == "clear":
+        elif q == "exit" or "ex" or "clear":
             clear()
         else:
             print("try again")
@@ -83,14 +83,14 @@ def randomwiki():
         ans = input("").lower()
 
         # i/o output
-        if ans == "y" or ans == "Y":
+        if ans == "y" or "Y":
             url = "https://en.wikipedia.org/wiki/%s" % title
             webbrowser.open(url)
             break
-        elif ans == "n" or ans == "N":
+        elif ans == "n" or "N":
             print("Try again!")
             continue
-        elif ans == "clear" or ans == "exit" or ans == "ex":
+        elif ans == "clear" or "exit" or "ex":
             clear()
         else:
             print("ERROR!")
@@ -113,13 +113,13 @@ def main():
 
     while True:
         i = input("branch: ")
-        if i == "assistant" or i == "as":
+        if i == "assistant" or "as":
             assistant()
         elif i == "clear":
             clear()
         elif i == "randomwiki":
             randomwiki()
-        elif i == "exit" or i == "ex":
+        elif i == "exit" or "ex":
             _ = system("clear")
             sys.exit()
         else:
