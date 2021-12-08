@@ -166,6 +166,83 @@ class ggs():
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 
+# GOOGLE SEARCH LIRBRAIES
+import requests
+from bs4 import BeautifulSoup
+#GTTS
+class ggsGUI():
+    def answer_search(user_query):
+        result = ''
+
+        URL = "https://www.google.co.in/search?q=" + user_query
+
+        headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
+        }
+
+        page = requests.get(URL, headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        ni = True
+
+        if ni == True: # Answer 1
+            try:
+                result = soup.find(class_='Z0LcW').get_text()
+                ni = False
+            except:
+                pass
+
+        if ni == True: # Answer 2
+            try:
+                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
+                ni = False
+            except:
+                pass
+
+        if result == '':
+            return "Restate the question!"
+        else:
+            return result
+
+    def disc_search(user_query):
+        result = ''
+
+
+        URL = "https://www.google.co.in/search?q=" + user_query
+
+        headers = {
+        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
+        }
+
+        page = requests.get(URL, headers=headers)
+        soup = BeautifulSoup(page.content, 'html.parser')
+        ni = True
+        if ni == True:  # Description 1
+            try:
+                result = soup.find(class_='kno-rdesc').get_text()
+                ni = False
+            except:
+                pass
+        if ni == True:  # Description 2
+            try:
+                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
+                ni = False
+            except:
+                pass
+
+        if ni == True:  # Description 3
+            try:
+                result = soup.find(class_='LGOjhe').get_text()
+                ni = False
+            except:
+                pass
+        if result == '':
+            return "Restate the question"
+
+        else:
+            return result
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+
 
 #WOLFRAMAI LIRBRAIES
 import wolframalpha as wl
@@ -237,20 +314,24 @@ class edithGUI(App):
 
         img = Image(source="image-resources/edith-abuzz.png")
 
-        wi = Button(text="wikipedia", background_color="#6FB1FC")
+        ans = Button(text="Answer", background_color="#6FB1FC")
         ed = Button(text="edith.ai", background_color="#6FB1FC")
-        wa = Button(text="wolframealpha", background_color="#6FB1FC")
-
+        desc = Button(text="description", background_color="#6FB1FC")
+        wol = Button(text="wolframAi", background_color="6FB1FC")
         mainLayout.add_widget(img)
-        wi.bind(on_press=self.wik)
 
-        hboxLayout.add_widget(wi)
+        ans.bind(on_press=self.answer)
+        hboxLayout.add_widget(ans)
+
         ed.bind(on_press=self.edi)
-
         hboxLayout.add_widget(ed)
-        #COMING SOON
-        wa.bind(on_press=self.wfa)
-        hboxLayout.add_widget(wa)
+
+        desc.bind(on_press=self.description)
+        hboxLayout.add_widget(desc)
+
+        wol.bind(on_press=self.wolf)
+        hboxLayout.add_widget(wol)
+
 
         vboxLayout = BoxLayout(orientation="vertical")
 
@@ -261,29 +342,30 @@ class edithGUI(App):
         mainLayout.add_widget(vboxLayout)
         return mainLayout
 
-    def wik(self, instance):
+    def answer(self, instance):
         # self.out.text = ""
         try:
-            wiki_res = wiki.summary(self.txtBox.text, sentences=2)
-            self.out.text = wiki_res
-            tts.run(wiki_res)
+            self.out.text = ggsGUI.answer_search(self.txtBox.text)
+            tts.run(self.out.text)
         except:
-            self.out.text = (
-                "The Wiki can't find anything for this... try again or try Wolfram"
-            )
+            self.out.text = ("The answer searching can't find anything for this... try again or try Wolfram or a description search")
 
     def edi(self, instance):
         self.out.text = "Edith AI coming soon.."
 
-    def wfa(self, instance):
+    def wolf(self, instance):
         try:
             wolfram_res = next(client.query(self.txtBox.text).results).text
             self.out.text = wolfram_res
             tts.run(wolfram_res)
         except:
-            self.out.text = (
-                "Wolfram can't find anything for this... try again or try the Wiki"
-            )
+            self.out.text = ("Wolfram can't find anything for this... try again or try the Wiki")
+    def description(self, instance):
+        try:
+            self.out.text = ggsGUI.disc_search(self.txtBox.text)
+            tts.run(self.out.text)
+        except:
+            self.out.text = ("The description search can't find anything for this... try again or try Wolfram answer search")
 
 
 

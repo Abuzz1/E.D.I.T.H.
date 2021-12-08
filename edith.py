@@ -31,7 +31,7 @@ def assistant():
     y = input("gui or terminal: ")
     if y == "gui":
         gui()
-    elif y == "terminal" or "term":
+    elif y == "terminal" or y == "term":
         txtVersion()
     else:
         print("try again!")
@@ -42,17 +42,19 @@ def assistant():
 def txtVersion():
     while True:
         q = input("Do you want to try wolframAi, search or the speech version? ")
-        if q == "wolframAi" or "wolframai" or "wa" or "wA":
-            wolframAi.run()
-        elif q == "search" or "sc":
+        if q == "search" or q == "sc":
             i = input("answer of descr? ")
-            if i == "descr" or "d":
+            if i == "descr" or i == "d":
                 ggs.disc_search()
             elif i == "answer":
                 ggs.answer_search()
+            else:
+                txtVersion()
         elif q == "speech":
             stt.run()
-        elif q == "exit" or "ex" or "clear":
+        elif q == "wolframai" or q == "wa" or q == "wolf":
+            wolframAi.run()
+        elif q == "exit" or q == "ex" or q == "clear":
             clear()
         else:
             print("try again")
@@ -113,13 +115,13 @@ def main():
 
     while True:
         i = input("branch: ")
-        if i == "assistant" or "as":
+        if i == "assistant" or i == "as":
             assistant()
         elif i == "clear":
             clear()
         elif i == "randomwiki":
             randomwiki()
-        elif i == "exit" or "ex":
+        elif i == "exit" or i == "ex":
             _ = system("clear")
             sys.exit()
         else:
