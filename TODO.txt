@@ -25,6 +25,7 @@ document reading
 
 line of ressesion
 flags to open gui or term fast or query fast  using  argparse... yuck!
+check that all the imports in edith.py is needed
 add EDITH ai in a different file from edith.py to import class to run commands with a JSON file to hold all i/o commands
 buildozer
 
