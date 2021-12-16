@@ -33,7 +33,8 @@ def assistant():
         gui()
     elif y == "terminal" or y == "term":
         txtVersion()
-    elif y == "exit" or y == "ex"
+    elif y == "exit" or y == "ex":
+        clear()
     else:
         print("try again!")
         print()
