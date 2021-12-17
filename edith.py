@@ -2,8 +2,7 @@
 
 # Import line
 import os
-from os import system, name, error
-import os.path
+from os import system
 import requests
 from bs4 import BeautifulSoup
 import webbrowser
@@ -44,6 +43,7 @@ def assistant():
 def txtVersion():
     while True:
         q = input("Do you want to try wolframAi, search or the speech version? ")
+
         if q == "search" or q == "sc":
             i = input("answer of descr? ")
             if i == "descr" or i == "d":
@@ -52,12 +52,16 @@ def txtVersion():
                 ggs.answer_search()
             else:
                 txtVersion()
+
         elif q == "speech":
             stt.run()
+
         elif q == "wolframai" or q == "wa" or q == "wolf":
             wolframAi.run()
+
         elif q == "exit" or q == "ex" or q == "clear":
             clear()
+
         else:
             print("try again")
             txtVersion()
@@ -114,9 +118,10 @@ def main():
     print("Terminal commands: "+color.OKGREEN+"clear"+color.NORM+"; "+color.OKGREEN+"exit"+color.NORM)
     print("BRANCH ACCSESS: "+color.OKGREEN+"assistant"+color.NORM+"; "+color.OKGREEN+"randomwiki"+ color.NORM)
 
-
+    #i/o
     while True:
         i = input("branch: ")
+
         if i == "assistant" or i == "as":
             assistant()
         elif i == "clear":

@@ -23,10 +23,9 @@ document reading
 
 
 
-line of ressesion
+line of recession
 flags to open gui or term fast or query fast  using  argparse... yuck!
-check that all the imports in edith.py is needed
-add EDITH ai in a different file from edith.py to import class to run commands with a JSON file to hold all i/o commands
+add EDITH ai in a different file from edith.py to import class to run commands with a UON to hold all i/o commands
 buildozer
 
 think about migrating edith.ai into rust (speed? possible? lightwieght for rassberry pi zero wh)
