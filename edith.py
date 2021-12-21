@@ -8,8 +8,6 @@ from bs4 import BeautifulSoup
 import webbrowser
 import time
 import sys
-
-
 # CLASSES tts, ggs, wolframAi, edithGUI, color
 from EdithOBJs import *
 
