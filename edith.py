@@ -41,22 +41,6 @@ def start():
     print("Terminal commands: "+color.OKGREEN+"clear"+color.NORM+"; "+color.OKGREEN+"exit"+color.NORM)
     print("BRANCH ACCSESS: "+color.OKGREEN+"main()"+color.NORM+"; "+color.OKGREEN+"randomwiki"+ color.NORM)
 
-    #i/o
-    while True:
-        i = input("branch: ")
-
-        if i == "main()" or i == "as":
-            main()
-        elif i == "clear":
-            clear()
-        elif i == "randomwiki":
-            randomwiki()
-        elif i == "exit" or i == "ex":
-            _ = system("clear")
-            sys.exit()
-        else:
-            print("!error! ~ !retry!")
-
 # main loop that runs everything
 def main():
     start()
