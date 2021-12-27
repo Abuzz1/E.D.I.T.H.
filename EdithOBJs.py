@@ -169,87 +169,18 @@ class ggs():
 # GOOGLE SEARCH LIRBRAIES
 import requests
 from bs4 import BeautifulSoup
-#GTTS
-class ggsGUI():
-    def answer_search(user_query):
-        result = ''
-
-        URL = "https://www.google.co.in/search?q=" + user_query
-
-        headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
-        }
-
-        page = requests.get(URL, headers=headers)
-        soup = BeautifulSoup(page.content, 'html.parser')
-        ni = True
-
-        if ni == True: # Answer 1
-            try:
-                result = soup.find(class_='Z0LcW').get_text()
-                ni = False
-            except:
-                pass
-
-        if ni == True: # Answer 2
-            try:
-                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
-                ni = False
-            except:
-                pass
-
-        if result == '':
-            return "Restate the question!"
-        else:
-            return result
-
-    def disc_search(user_query):
-        result = ''
-
-
-        URL = "https://www.google.co.in/search?q=" + user_query
-
-        headers = {
-        'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.57'
-        }
-
-        page = requests.get(URL, headers=headers)
-        soup = BeautifulSoup(page.content, 'html.parser')
-        ni = True
-        if ni == True:  # Description 1
-            try:
-                result = soup.find(class_='kno-rdesc').get_text()
-                ni = False
-            except:
-                pass
-        if ni == True:  # Description 2
-            try:
-                result = soup.find(class_='VwiC3b yXK7lf MUxGbd yDYNvb lyLwlc lEBKkf').get_text()
-                ni = False
-            except:
-                pass
-
-        if ni == True:  # Description 3
-            try:
-                result = soup.find(class_='LGOjhe').get_text()
-                ni = False
-            except:
-                pass
-        if result == '':
-            return "Restate the question"
-
-        else:
-            return result
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 
 #WOLFRAMAI LIRBRAIES
 import wolframalpha as wl
-# wolframalpha api key
+import ssl
+# wolframalpha api key and ssl bug fix
 client = wl.Client("G8X7XT-LH93TX486J")
+ssl._create_default_https_context = ssl._create_unverified_context
 
-#WOLFRAMAI
+# WOLFRAMAI
 class wolframAi():
     def run():
         while True:
@@ -269,6 +200,7 @@ class wolframAi():
                     print()
                     break
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 #WOLFRAMAI version for speech to text
 class wolframAiSTT():
@@ -284,97 +216,7 @@ class wolframAiSTT():
             print("Wolfram can't find anything for this... try again or try the Wiki")
             print()
 
-
-# gui
-from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.label import Label
-from kivy.uix.textinput import TextInput
-from kivy.uix.button import Button
-from kivy.uix.image import Image
-
-# GUI INTERFACE
-class WrappedLabel(Label):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.bind(
-            width=lambda *x:
-            self.setter('text_size')(self, (self.width, None)),
-            texture_size=lambda *x: self.setter('height')(self, self.texture_size[1]))
-
-class edithGUI(App):
-    txtBox = TextInput(multiline = True, padding_y = (20, 20), size_hint = (1, 0.5))
-    out = WrappedLabel(text = "Output: ", font_size="15dp", color="#00FFCE", halign = "center")
-
-    def build(self):
-        # LAYOUTS
-        mainLayout = BoxLayout(orientation="vertical")
-        hboxLayout = BoxLayout(orientation="horizontal")
-
-        img = Image(source="image-resources/edith-abuzz.png")
-
-        ans = Button(text="Answer", background_color="#6FB1FC")
-        ed = Button(text="edith.ai", background_color="#6FB1FC")
-        desc = Button(text="description", background_color="#6FB1FC")
-        wol = Button(text="wolframAi", background_color="6FB1FC")
-        mainLayout.add_widget(img)
-
-        ans.bind(on_press=self.answer)
-        hboxLayout.add_widget(ans)
-
-        ed.bind(on_press=self.edi)
-        hboxLayout.add_widget(ed)
-
-        desc.bind(on_press=self.description)
-        hboxLayout.add_widget(desc)
-
-        wol.bind(on_press=self.wolf)
-        hboxLayout.add_widget(wol)
-
-
-        vboxLayout = BoxLayout(orientation="vertical")
-
-        vboxLayout.add_widget(self.txtBox)
-        vboxLayout.add_widget(self.out)
-
-        mainLayout.add_widget(hboxLayout)
-        mainLayout.add_widget(vboxLayout)
-        return mainLayout
-
-    def answer(self, instance):
-        # self.out.text = ""
-        try:
-            self.out.text = ggsGUI.answer_search(self.txtBox.text)
-            tts.run(self.out.text)
-        except:
-            self.out.text = ("The answer searching can't find anything for this... try again or try Wolfram or a description search")
-
-    def edi(self, instance):
-        self.out.text = "Edith AI coming soon.."
-
-    def wolf(self, instance):
-        try:
-            wolfram_res = next(client.query(self.txtBox.text).results).text
-            self.out.text = wolfram_res
-            tts.run(wolfram_res)
-        except:
-            self.out.text = ("Wolfram can't find anything for this... try again or try the Wiki")
-    def description(self, instance):
-        try:
-            self.out.text = ggsGUI.disc_search(self.txtBox.text)
-            tts.run(self.out.text)
-        except:
-            self.out.text = ("The description search can't find anything for this... try again or try Wolfram answer search")
-
-
-
-
-
-
-
-# !!!!!!~
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # for the colors in printing
 class color:
@@ -388,13 +230,9 @@ class color:
     BOLD = "\033[1m"
     UNDERLINE = "\033[4m"
 
-
-
-
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 #stt
-
-
 import speech_recognition as sr
 import re
 
@@ -419,14 +257,14 @@ class stt():
         except:
             print("speak up!")
 
-    def a(q):
-        ggs.answer_searchSTT(q)
-    def d(q):
-        ggs.disc_searchSTT(q)
-    def wolf(q):
-        wolframAiSTT.run(q)
 
     def run():
+        def a(q):
+            ggs.answer_searchSTT(q)
+        def d(q):
+            ggs.disc_searchSTT(q)
+        def wolf(q):
+            wolframAiSTT.run(q)
         def wakeUp():
             alpha = stt.micro()
             # alpha = input()
@@ -461,10 +299,10 @@ class stt():
                     wolf(query)
                 #ERRORS
                 else:
-                    print("Say it again!")
+                    print(f"Say it again! You said '{str(alpha)}'")
 
             except:
-                print("Say it again!")
+                print(f"Say it again! You said '{str(alpha)}'")
 
 
         wakeUp()
