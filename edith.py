@@ -39,7 +39,7 @@ def start():
 
     print(color.NORM+"Welcome to "+color.BOLD+"E.D.I.T.H. "+color.NORM+"("+color.FAIL+"Abuzz-Industies"+color.NORM+")")
     print("Terminal commands: "+color.OKGREEN+"clear"+color.NORM+"; "+color.OKGREEN+"exit"+color.NORM)
-    print("BRANCH ACCSESS: "+color.OKGREEN+"main()"+color.NORM+"; "+color.OKGREEN+"randomwiki"+ color.NORM)
+    print("BRANCH ACCSESS: "+color.OKGREEN+"1e 1d 91 fe 5d 5e 5d 3c ff d0 2e 8e 1a 23 37 8e f9 8e 43 16 ae e5 60 85 f8 f9 1a b8 98 4c c5 5a 43 93 c8 72 09 7e f8 84 96 a1 84 5d 6e 28 8f a7 47 eb 4a 9f 26 76 ca bd e6 96 87 1f 8d d9 f3 ec"+color.NORM)
 
 # main loop that runs everything
 def main():
