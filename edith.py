@@ -59,6 +59,7 @@ def start():
 
 # main loop that runs everything
 def main():
+    start()
     while True:
         q = input("Do you want to try wolframAi, search or the speech version? ")
 
