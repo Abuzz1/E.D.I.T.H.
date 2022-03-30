@@ -1,0 +1,25 @@
+
+            {% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Ask ΣA {% endblock %}</h1>
+    <form method="post">
+        <br>
+
+        <label for="content">Message Content</label>
+        <br>
+        <textarea name="content"
+                  placeholder="Message content"
+                  rows="15"
+                  cols="60"
+                  >{{ request.form['content'] }}</textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <h3>     
+Response: 
+Nov 22, 2021 — He is 6 feet 0 inches tall. Chris Evans standing with Hayley Atwell whose height is reported as 5 feet 6 inches. 
+    </h3>
+{% endblock %}
+            

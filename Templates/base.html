@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <title>{% block title %} {% endblock %} - FlaskApp</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+        .message {
+            padding: 10px;
+            margin: 5px;
+            background-color: #140f0f
+        }
+        nav a {
+            color: white;
+            font-size: 3em;
+            margin-left: 50px;
+            text-decoration: none;  
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
+        
+        div {
+            color: white;
+        }
+        h3 {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <nav>
+        <a href="{{ url_for('index') }}">ΣA</a>
+        <a href="https://github.com/Abuzz1/E.D.I.T.H.">Github</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% for message in get_flashed_messages() %}
+            <div class="alert">{{ message }}</div>
+        {% endfor %}
+        {% block content %} {% endblock %}
+    </div>
+</center>
+</body>
+</html>
