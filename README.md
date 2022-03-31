@@ -92,7 +92,7 @@
 
 3. Update the API key
 
-4. update ```sh .zshrc``` or ```sh .bash_profile```. (Pick the one you use)
+4. update ```.zshrc``` or ```.bash_profile```. (Pick the one you use)
     append a line 
    ```
    alias edith='python3 {PATH-TO-FILE}/edith.py'
@@ -125,10 +125,10 @@ and online server is for the webserver
 
 after this you can run edith
 
-running edith like ```sh edith ``` will either run the webserver (if told via config) 
+running edith like ``` edith ``` will either run the webserver (if told via config) 
 or bring up the edith i/o.
 
-running edith like ```sh edith go turn on lights ``` will ONLY tell edith a question, and will answer back.
+running edith like ``` edith go turn on lights ``` will ONLY tell edith a question, and will answer back.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
