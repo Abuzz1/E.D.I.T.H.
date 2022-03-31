@@ -12,10 +12,10 @@
 <h3 align="center">E.D.I.T.H.</h3>
 
   <p align="center">
-  Edith a personalized and best-friend like AI that is your assistant, or everything. :D
+  Edith is a personalized and customizable pseudo-AI,  used as a light weight assistant
 
-  GUI; terminal use; assistant; and soon to have google home support and perfect strategy Blackjack
-
+  terminal use; webserver use; and soon to have google home support and perfect strategy Blackjack
+  All of which is super easy to customize for your needs
   All in the power of Edith
 
 
@@ -68,7 +68,8 @@
 ### Built With
 
 * [python](https://python.org/)
-
+* [html](https://whatwg.org/)
+* [bash](https://www.gnu.org/software/bash/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -91,7 +92,25 @@
 
 3. Update the API key
 
-4. Enjoy!
+4. update ```sh .zshrc``` or ```sh .bash_profile```. (Pick the one you use)
+    append a line 
+   ```
+   alias edith='python3 {PATH-TO-FILE}/edith.py'
+
+5. run the the setup.sh file
+   ```sh
+   ./setup.sh
+   
+   ```
+   if it doesn't yeild results run
+   ```sh
+   chmod +x setup.sh
+   ```
+  run 
+   ```sh
+   edith
+   ```
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -100,7 +119,17 @@
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-After cloning, you'll see a folder named 'E.D.I.T.H.', open it. type python3 edith.py and go through the prompts
+now the edith command will be able to run edith.
+edith config file to needs
+go commands are custom commands
+and online server is for the webserver
+after this you can run edith
+
+running edith like ```sh edith ``` will either run the webserver (if told via config) 
+or bring up the edith i/o.
+
+running edith like ```sh edith go turn on lights ``` will ONLY tell edith a question, and will answer back.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -127,7 +156,7 @@ Don't forget to give the project a star! Thanks again!
 <!-- LICENSE -->
 ## License
 
-Distributed under the BSD-3 License. See `LICENSE in the main branch` for more information.
+Distributed under the BSD-3 License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
