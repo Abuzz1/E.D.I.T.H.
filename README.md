@@ -106,10 +106,6 @@
    ```sh
    chmod +x setup.sh
    ```
-  run 
-   ```sh
-   edith
-   ```
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
