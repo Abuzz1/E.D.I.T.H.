@@ -116,9 +116,13 @@
 ## Usage
 
 now the edith command will be able to run edith.
-edith config file to needs
+change config.py file to needs
+
+---------------------------------------------
 go commands are custom commands
 and online server is for the webserver
+
+
 after this you can run edith
 
 running edith like ```sh edith ``` will either run the webserver (if told via config) 
