@@ -1,3 +1,5 @@
+# from go.bj_strat import blackjack
+
 class Memory:
     # output line
     def lights_off(self):
@@ -5,6 +7,7 @@ class Memory:
 
     def lights_on(self):
         print("lights are on in room")
+
     
     # calling line
     def acs(self, input): 
@@ -19,6 +22,7 @@ class Memory:
         mem = {
             "go turn off lights": self.lights_off,
             "go turn on lights": self.lights_on,
+            # "go run blackjack": blackjack
         }
 
         return mem[input]()

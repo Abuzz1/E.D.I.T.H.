@@ -109,26 +109,25 @@ client = wl.Client("G8X7XT-LH93TX486J")
 ssl._create_default_https_context = ssl._create_unverified_context
 
 # WOLFRAMAI
-class wolframAi:
-    def run(z):
-        """used for wolframalpha API calls
+def wolframAi(z):
+    """used for wolframalpha API calls
 
-        Args:
-            z (str): used for i/o communication
-        """
-        while True:
-            if z == ["exit", "ex"]:
+    Args:
+        z (str): used for i/o communication
+    """
+    while True:
+        if z == ["exit", "ex"]:
+            break
+        else:
+            try:
+                wolfram_res = next(client.query(z).results).text
+                return wolfram_res
+            except:
+                print(
+                    "Wolfram can't find anything for this... try again?"
+                )
+                print()
                 break
-            else:
-                try:
-                    wolfram_res = next(client.query(z).results).text
-                    return wolfram_res
-                except:
-                    print(
-                        "Wolfram can't find anything for this... try again?"
-                    )
-                    print()
-                    break
 
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#

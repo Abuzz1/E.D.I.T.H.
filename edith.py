@@ -8,10 +8,10 @@ from flask import Flask, render_template, request, flash
 # CLASSES tts, ggs, wolframAi, edithGUI, color, and Memory, Config
 from EdithOBJs import *
 from edithMemory import Memory
-from config import Config
+from config import config
 
 # config data
-config = Config.get()
+config = config()
 
 #flash webserver and resources for messaging
 app = Flask(__name__)
@@ -53,7 +53,7 @@ def get_answer(q):
         q_split.pop(0)
         result = cq(str(q_split))
 
-        return wolframAi.run(result)
+        return wolframAi(result)
 
 
 @app.route('/', methods=('GET', 'POST'))
@@ -162,8 +162,23 @@ def start(q):
     print(
         color.NORM
         + """
+    Ali   Alshawabkeh
     █▀▀ █▀▄ █ ▀█▀ █ █
     ██▄ █▄▀ █  █  █▀█
+    ~~~~~~~~~~~~~~~~~
+    |███████████▄▄.           |█████| 
+    |█|                   |████|   |███|             
+     '▀█|                |█|    |██▀' '▀██|               
+      '▀█|             |█|    |█'       '▀██|            
+       '▀█|                 |█'           '▀██|        
+        '▀█|               |█'             '▀██|      
+         .▄█|              |█'              '▀██|    
+        .▄█|               |████████████████████|  
+       .▄█|               |█▀'                '█| 
+      .▄█|               |█▀'                  '▀█|     
+     .▄█|               |█▀'                     '▀█|      
+    .▄█|               |█▀'                        '▀█|    ██▄.
+    |███████████▀▀'   |█▀'                           '▀████▀'
     """
     )
 
@@ -221,7 +236,7 @@ def main():
                 if q in ['exit', 'ex']:
                     exit()
                 else:
-                    print(f'Answer: {answer}')    
+                    print(f'Σ̳A̳: {answer}')    
             else:
                 print("couldn't get answer? Try again.")
             if arguments != False:
